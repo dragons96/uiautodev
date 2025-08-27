@@ -1,0 +1,55 @@
+# uiautodev
+
+[![codecov](https://codecov.io/gh/codeskyblue/appinspector/graph/badge.svg?token=aLTg4VOyQH)](https://codecov.io/gh/codeskyblue/appinspector)
+[![PyPI version](https://badge.fury.io/py/uiautodev.svg)](https://badge.fury.io/py/uiautodev)
+
+基于 [codeskyblue/uiautodev](https://github.com/codeskyblue/uiautodev) 二次开发，提供本地化WebUI调试页面代替 [https://uiauto.devsleep.com/](https://uiauto.devsleep.com/)
+
+本地化页面地址：http://localhost:20242/
+
+页面截图：
+
+![img](./examples/image.png)
+
+已支持基础的各种定位以及元素基本信息查看。
+
+目前仅测试安卓系统，IOS、鸿蒙系统待测试。
+
+# Install
+
+```bash
+pip install uiautodev
+```
+
+To enable Harmony support, run the following command to install its dependencies:
+
+```sh
+uiautodev install-harmony
+```
+
+# Usage
+
+```bash
+Usage: uiauto.dev [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -v, --verbose  verbose mode
+  -h, --help     Show this message and exit.
+
+Commands:
+  android      COMMAND: tap, tapElement, installApp, currentApp,...
+  appium       COMMAND: tap, tapElement, installApp, currentApp,...
+  ios          COMMAND: tap, tapElement, installApp, currentApp,...
+  self-update  Update uiautodev to latest version
+  server       start uiauto.dev local server [Default]
+  version      Print version
+```
+
+```bash
+# run local server and open browser
+uiauto.dev
+```
+
+# LICENSE
+
+[MIT](LICENSE)

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIAutoDEV - 调试工具</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>UIAutoDEV - 调试工具</h1>
+        <div class="device-selector">
+            <label for="deviceSelect">选择设备:</label>
+            <select id="deviceSelect">
+                <option value="">请选择设备...</option>
+            </select>
+            <button id="refreshBtn" class="refresh-btn">刷新</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- 左侧：设备截图 -->
+        <div class="screenshot-panel">
+            <div class="panel-header">
+                <h3>设备截图</h3>
+            </div>
+            <div class="screenshot-container">
+                <img id="deviceScreenshot" src="" alt="设备截图" />
+                <div id="screenshotOverlay"></div>
+                <div id="hoverHighlight" class="hover-highlight"></div>
+            </div>
+        </div>
+
+        <!-- 中间：元素层次结构 -->
+        <div class="hierarchy-panel">
+            <div class="panel-header">
+                <h3>页面元素</h3>
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="搜索节点（类名、ID、文本）...">
+                </div>
+            </div>
+            <div class="hierarchy-container">
+                <div id="hierarchyTree"></div>
+            </div>
+        </div>
+
+        <!-- 右侧：元素详细信息 -->
+        <div class="details-panel">
+            <div class="panel-header">
+                <h3>元素详情</h3>
+            </div>
+            <div class="details-container">
+                <div id="elementDetails">
+                    <p class="no-selection">请选择一个元素查看详细信息</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <span id="statusText">就绪</span>
+        <span id="connectionStatus" class="status-disconnected">未连接</span>
+    </div>
+
+    <!-- 加载遮罩层 -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">正在加载设备数据...</div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
