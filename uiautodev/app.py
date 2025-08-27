@@ -38,7 +38,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # 挂载静态文件目录
-app.mount("/static", StaticFiles(directory=os.path.dirname(os.path.dirname(__file__)) + "/uiautoweb/static"), name="static")
+app.mount("/static", StaticFiles(directory=os.path.dirname(__file__) + "/web/static"), name="static")
 
 
 def enable_logger_to_console():
@@ -145,7 +145,7 @@ def index_redirect():
     # url = get_webpage_url()
     # logger.debug("redirect to %s", url)
     # return RedirectResponse(url)
-    return FileResponse(os.path.dirname(os.path.dirname(__file__)) + '/uiautoweb/index.html')
+    return FileResponse(os.path.dirname(__file__) + '/web/index.html')
 
 
 @app.websocket("/ws/android/scrcpy/{serial}")
