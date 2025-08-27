@@ -58,4 +58,10 @@ uiauto.dev
 
 # LICENSE
 
-[MIT](LICENSE)
+[MIT](LICENSE) 
+
+# 其他
+
+如有任何问题欢迎 issue 或联系QQ 521274311
+
+喜欢本项目的话给一个star吧，你的star是我们开发的动力！
