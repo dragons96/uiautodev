@@ -15,6 +15,12 @@
 
 目前仅测试安卓系统，IOS、鸿蒙系统待测试。
 
+若有 uv 环境可直接使用 uvx 命令运行
+
+```shell
+uvx --from https://github.com/dragons96/uiautodev.git uiautodev
+```
+
 # Install
 
 ```bash
