@@ -153,7 +153,7 @@ body {
     color: #495057;
 }
 
-.panel-header button {
+.panel-header button:not(.action-btn) {
     padding: 6px 12px;
     background: #007bff;
     color: white;
@@ -164,8 +164,102 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.panel-header button:hover {
+.panel-header button:not(.action-btn):hover {
     background: #0056b3;
+}
+
+/* 面板操作按钮 */
+.panel-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #495057;
+    transition: all 0.3s ease;
+    width: 32px;
+    height: 32px;
+}
+
+.action-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.action-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.action-btn.active:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-1px);
+}
+
+.btn-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.btn-text {
+    font-weight: 500;
+    font-size: 11px;
+}
+
+/* 设备控制按钮 */
+.device-control-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+}
+
+.device-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.device-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #adb5bd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.device-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.device-btn-icon {
+    font-size: 16px;
+    line-height: 1;
 }
 
 /* 截图面板 */
@@ -191,11 +285,29 @@ body {
     object-fit: contain;
     border-radius: 0;
     box-shadow: none;
-    cursor: pointer;
+    cursor: default;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+#deviceVideoStream {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: default;
     padding: 0;
     margin: 0;
     display: block;
     border: none;
+}
+
+/* 元素查看模式下的鼠标指针样式 */
+#viewElementsBtn.active ~ * #deviceScreenshot {
+    cursor: pointer;
 }
 
 #screenshotOverlay {
@@ -314,6 +426,16 @@ body {
     display: inline;
 }
 
+.node-index {
+    color: #666;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 4px;
+    background: #f0f0f0;
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
 .node-tag {
     color: #1976d2;
     font-weight: 600;
@@ -362,8 +484,25 @@ body {
 
 .detail-item {
     display: flex;
-    margin-bottom: 8px;
+    padding: 8px 15px;
+    border-bottom: 1px solid #f1f3f4;
     font-size: 13px;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item label {
+    font-weight: 600;
+    color: #6c757d;
+    min-width: 60px;
+    margin-right: 10px;
+}
+
+.detail-item span {
+    color: #495057;
+    word-break: break-all;
 }
 
 .detail-label {
@@ -564,4 +703,38 @@ body {
 .detail-section .detail-item span {
     color: #495057;
     word-break: break-all;
+}
+
+/* 复制按钮样式 */
+.copy-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.2s;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.copy-btn:hover {
+    background: #f8f9fa;
+    border-color: #007bff;
+    transform: scale(1.1);
+}
+
+.copy-btn:active {
+    background: #e9ecef;
+    transform: scale(0.95);
+}
+
+.copy-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }

@@ -22,12 +22,42 @@
         <!-- 左侧：设备截图 -->
         <div class="screenshot-panel">
             <div class="panel-header">
-                <h3>设备截图</h3>
+                <div class="header-top">
+                    <h3>设备</h3>
+                    <div class="panel-actions">
+                        <button id="viewElementsBtn" class="action-btn active view-elements" title="查看页面元素">
+                            <span class="btn-icon">👁️</span>
+                        </button>
+                        <button id="deviceControlBtn" class="action-btn device-control" title="实时连接设备操作">
+                            <span class="btn-icon">🎮</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="screenshot-container">
                 <img id="deviceScreenshot" src="" alt="设备截图" />
+                <video id="deviceVideoStream" autoplay muted playsinline style="display: none;"></video>
                 <div id="screenshotOverlay"></div>
                 <div id="hoverHighlight" class="hover-highlight"></div>
+                
+                <!-- 设备控制按钮 -->
+                <div id="deviceControlButtons" class="device-control-buttons" style="display: none;">
+                    <button id="deviceHomeBtn" class="device-btn" title="主页">
+                        <span class="btn-icon">🏠</span>
+                    </button>
+                    <button id="deviceBackBtn" class="device-btn" title="返回">
+                        <span class="btn-icon">⬅️</span>
+                    </button>
+                    <button id="deviceAppSwitchBtn" class="device-btn" title="应用切换">
+                        <span class="btn-icon">📱</span>
+                    </button>
+                    <button id="deviceVolumeUpBtn" class="device-btn" title="音量+">
+                        <span class="btn-icon">🔊</span>
+                    </button>
+                    <button id="deviceVolumeDownBtn" class="device-btn" title="音量-">
+                        <span class="btn-icon">🔉</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -60,6 +90,7 @@
     <div class="status-bar">
         <span id="statusText">就绪</span>
         <span id="connectionStatus" class="status-disconnected">未连接</span>
+        <span id="videoStatus" class="video-status">视频流未连接</span>
     </div>
 
     <!-- 加载遮罩层 -->
@@ -70,6 +101,7 @@
         </div>
     </div>
 
+    <script src="/static/video.js"></script>
     <script src="/static/app.js"></script>
 </body>
 </html>

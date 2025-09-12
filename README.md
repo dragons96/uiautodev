@@ -58,7 +58,12 @@ uiauto.dev
 
 # LICENSE
 
-[MIT](LICENSE) 
+[MIT](LICENSE)
+
+# 更新记录
+
+2025-09-12
+1. 支持安卓设备的在线控制 (暂不支持IOS与鸿蒙)
 
 # 其他
 
