@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/codeskyblue/appinspector/graph/badge.svg?token=aLTg4VOyQH)](https://codecov.io/gh/codeskyblue/appinspector)
 [![PyPI version](https://badge.fury.io/py/uiautodev.svg)](https://badge.fury.io/py/uiautodev)
 
-基于 [codeskyblue/uiautodev](https://github.com/codeskyblue/uiautodev) 二次开发，提供本地化WebUI调试页面代替 [https://uiauto.devsleep.com/](https://uiauto.devsleep.com/)
+基于 [codeskyblue/uiautodev](https://github.com/codeskyblue/uiautodev) 二次开发，提供本地化WebUI调试页面代替 [https://uiauto.devsleep.com/](https://uiauto.devsleep.com/) (推荐优先使用官方版本， 官方版本功能更全面好用， 该版本仅建议无网络/内网环境使用)
 
 本地化页面地址：http://localhost:20242/
 
@@ -24,7 +24,8 @@ uvx --from https://github.com/dragons96/uiautodev.git uiautodev
 # Install
 
 ```bash
-pip install uiautodev
+pip install poetry
+poetry install
 ```
 
 To enable Harmony support, run the following command to install its dependencies:
@@ -53,7 +54,7 @@ Commands:
 
 ```bash
 # run local server and open browser
-uiauto.dev
+uiautodev
 ```
 
 # LICENSE
@@ -63,6 +64,7 @@ uiauto.dev
 # 更新记录
 
 2025-09-12
+
 1. 支持安卓设备的在线控制 (暂不支持IOS与鸿蒙)
 
 # 其他
