@@ -142,7 +142,8 @@ def pip_install(package: str):
 @click.option("--reload", is_flag=True, default=False, help="auto reload, dev only")
 @click.option("-f", "--force", is_flag=True, default=False, help="shutdown alrealy runningserver")
 @click.option("-s", "--no-browser", is_flag=True, default=False, help="silent mode, do not open browser")
-def server(port: int, host: str, reload: bool, force: bool, no_browser: bool):
+@click.option("--https", is_flag=True, default=False, help="enable https by default cert")
+def server(port: int, host: str, reload: bool, force: bool, no_browser: bool, https: bool):
     click.echo(f"uiautodev version: {__version__}")
     if force:
         try:
@@ -155,10 +156,14 @@ def server(port: int, host: str, reload: bool, force: bool, no_browser: bool):
         use_color = False
 
     if not no_browser:
-        th = threading.Thread(target=open_browser_when_server_start, args=(f"http://{host}:{port}",))
+        th = threading.Thread(target=open_browser_when_server_start, args=(f"{'https' if https else 'http'}://{host}:{port}",))
         th.daemon = True
         th.start()
-    uvicorn.run("uiautodev.app:app", host=host, port=port, reload=reload, use_colors=use_color)
+    if https:
+        ssl_dir = os.path.dirname(__file__)
+        uvicorn.run("uiautodev.app:app", host=host, port=port, reload=reload, use_colors=use_color, ssl_keyfile=os.path.join(ssl_dir, "key.pem"), ssl_certfile=os.path.join(ssl_dir, "cert.pem"))
+    else:
+        uvicorn.run("uiautodev.app:app", host=host, port=port, reload=reload, use_colors=use_color)
 
 
 def open_browser_when_server_start(server_url: str):

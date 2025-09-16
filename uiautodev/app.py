@@ -30,8 +30,20 @@ from uiautodev.router.device import make_router
 from uiautodev.router.proxy import router as proxy_router
 from uiautodev.router.xml import router as xml_router
 from uiautodev.utils.envutils import Environment
+from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+
+
+
+class PermissionsPolicyMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        # 关键：添加 Permissions-Policy 头，显式允许所有起源使用这些功能
+        response.headers["Permissions-Policy"] = "camera=*, microphone=*, display-capture=*, encrypted-media=*, interest-cohort=()"
+        # 注意：WebCodecs 没有特定的策略指令，但它依赖于整个页面的安全上下文和宽松的策略。
+        return response
+
 
 logger = logging.getLogger(__name__)
 
@@ -57,6 +69,8 @@ app.add_middleware(
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
+app.add_middleware(PermissionsPolicyMiddleware)
 
 android_router = make_router(AndroidProvider())
 ios_router = make_router(IOSProvider())
